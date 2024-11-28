@@ -1,4 +1,4 @@
-package utils;
+package RestUtils;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
