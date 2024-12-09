@@ -29,4 +29,14 @@ public class RestUtils {
                 .post()
                 .then().log().all().extract().response();
     }
+
+    public static Response performGet(String endPoint, Map<String, String> headers) {
+        return RestAssured.given().log().all()
+                .baseUri(endPoint)
+                .headers(headers)
+                .get()
+                .then()
+                .log().all()
+                .extract().response();
+    }
 }

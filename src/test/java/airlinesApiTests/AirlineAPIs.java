@@ -11,4 +11,9 @@ public class AirlineAPIs {
         String endPoint = (String) Base.dataFromJsonFile.get("createAirLineEndPoint");
         return RestUtils.performPost(endPoint, createAirlinePayload, new HashMap<>());
     }
+
+    public Response getAirline() {
+        String endPoint = "https://api.instantwebtools.net/v1/airlines/28321851-bfd1-4f46-bf5a-c0a3e099ff8e";
+        return RestUtils.performGet(endPoint, new HashMap<>());
+    }
 }
