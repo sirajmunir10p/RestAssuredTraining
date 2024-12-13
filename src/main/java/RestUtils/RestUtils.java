@@ -34,6 +34,17 @@ public class RestUtils {
     }
 
     @Step
+    public static Response performPost(String endPoint, Object requestPayload, Map<String, String> headers) {
+        return RestAssured.given().log().all()
+                .baseUri(endPoint)
+                .contentType(ContentType.JSON)
+                .headers(headers)
+                .body(requestPayload)
+                .post()
+                .then().log().all().extract().response();
+    }
+
+    @Step
     public static Response performGet(String endPoint, Map<String, String> headers) {
         return RestAssured.given().log().all()
                 .baseUri(endPoint)

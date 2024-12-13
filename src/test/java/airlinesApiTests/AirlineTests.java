@@ -1,5 +1,6 @@
 package airlinesApiTests;
 
+import airlinesApiTests.pojos.Airline;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;
@@ -37,6 +38,24 @@ public class AirlineTests extends AirlineAPIs {
     }
 
     @Test
+    @Story("REST-002")
+    @Description("This is Creating a new Airline with Java/Data Faker")
+    public void createAirLineTestWithJavaFaker() {
+        Map<String, Object> payLoad = Payloads.getAirlinePayloadByFakerClass();
+        Response response = createAline(payLoad);
+        Assert.assertEquals(response.statusCode(), 200);
+    }
+
+    @Test
+    @Story("REST-004")
+    @Description("This is Creating a new Airline with Java/Data Faker")
+    public void createAirLineTestWithPojo() {
+        Airline payLoad = Payloads.getAirlinePayloadUsingPojo();
+        Response response = createAline(payLoad);
+        Assert.assertEquals(response.statusCode(), 200);
+    }
+
+    @Test
     @Story("REST-001")
     @Description("This is Getting Airline By ID")
     public void getAirlinesByID() {
@@ -45,4 +64,6 @@ public class AirlineTests extends AirlineAPIs {
         String actualId = response.jsonPath().getString("_id");
         Assert.assertEquals(actualId, "28321851-bfd1-4f46-bf5a-c0a3e099ff8e", "The AirlineID cannot be found!");
     }
+
+
 }
