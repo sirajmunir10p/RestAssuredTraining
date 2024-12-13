@@ -8,6 +8,8 @@
                     <include name="createAirLineTest"/>
                     <include name="createAirLineTestWithMap"/>
                     <include name="getAirlinesByID"/>
+                    <include name="createAirLineTestWithPojo"/>
+                    <include name="createAirLineTestWithJavaFaker"/>
                 </methods>
             </class>
         </classes>
